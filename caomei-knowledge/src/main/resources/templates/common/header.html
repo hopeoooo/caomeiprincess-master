@@ -1,0 +1,11 @@
+<div role="navigation" class="zu-top">
+    <div class="zg-wrap modal-shifting clearfix" id="zh-top-inner">
+        <div role="search" id="zh-top-search" class="zu-top-search">
+            <form method="GET" action="/" id="zh-top-search-form" class="zu-top-search-form">
+                <label for="p" class="hide-text">搜索</label><input type="text" class="zu-top-search-input" id="p" name="param" autocomplete="off" th:value="${param.param}" placeholder="搜索你感兴趣的内容..." role="combobox" aria-autocomplete="list">
+                <button type="submit" class="zu-top-search-button"><span class="sprite-global-icon-magnifier-dark">🔍</span></button>
+            </form>
+            <input type="hidden" id="param" th:value="${param.param}"  >
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+# Project exclude paths
+/caomei-blog/target/
+/caomei-job-admin/target/
+/caomei-job-core/target/
+/caomei-job-executor/target/
+/caomei-knowledge/target/
+/caomei-music/target/

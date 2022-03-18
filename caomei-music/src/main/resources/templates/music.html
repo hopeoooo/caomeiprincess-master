@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>CaoMei-Music</title>
+<link rel="icon" th:href="@{/img/favicon.png}" type="image/png">
+<style type="text/css">
+
+    html {
+        height: 100%;
+        display: table;
+    }
+
+    body {
+        display: table-cell;
+        height: 100%;
+    }
+    .music {
+        position: absolute;      /*绝对定位*/
+        top: 50%;                  /* 距顶部50%*/
+        left: 50%;                  /* 距左边50%*/
+        height: 60%;  margin-top: -20%;   /*margin-top为height一半的负值*/
+        width: 80%;  margin-left: -40%;    /*margin-left为width一半的负值*/
+    }
+</style>
+<body>
+    <div class = "music">
+        <meting-js th:id="${musicId}" name="music" server="netease" type="song" auto="" autoplay="flase"></meting-js>
+    </div>
+    <br>
+    <input type="button" onclick="changeId()" value="changeMusic" />
+<script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<link rel="stylesheet" href="/css/APlayer.min.css">
+<script src="/js/APlayer.min.js"></script>
+<script src="/js/Meting.min.js"></script>
+</body>
+<script type="text/javascript">
+
+    function changeId() {
+        $(".music").html(metingStr(572720727));
+    }
+
+    function metingStr(id) {
+        return "<meting-js id='"+id+"' name='music' server='netease' type='song' auto='' autoplay='flase'></meting-js>"
+    }
+</script>
+</html>

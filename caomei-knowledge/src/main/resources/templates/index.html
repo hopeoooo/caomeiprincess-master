@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head"></head>
+<link rel="stylesheet" href="/css/index.css">
+<body>
+<div th:replace="common/header"></div>
+<div class="zg-wrap zu-main clearfix " role="main">
+    <div class="zu-main-content">
+        <div class="zu-main-content-inner">
+            <div class="zg-section" id="zh-home-list-title">
+                <i class="zg-icon zg-icon-feedlist"></i>
+            </div>
+            <div class="zu-main-feed-con navigable">
+                <div id="js-home-feed-list">
+                    <!--循环begin-->
+                    <div th:each="question,questionStat : ${questionList.data.rows}"
+                         class="feed-item folding feed-item-hook feed-item-2">
+                        <div class="feed-item-inner">
+                            <div class="avatar">
+                                <img src="/img/caomei.jpg" class="zm-item-img-avatar">
+                            </div>
+                            <div class="feed-main">
+                                <div class="feed-content" data-za-module="AnswerItem">
+                                    <h2 class="feed-title">
+                                        <a class="question_link" target="_blank" href="/" th:text="${question.title}">
+                                        </a>
+                                    </h2>
+                                    <div th:utext="${question.qText}"></div>
+                                    <div class="expandable entry-body">
+                                        <div class="zm-item-answer-author-info">
+                                            <span class="author-link"
+                                                  th:text="${#dates.format(question.qUpdateDate,'yyyy-MM-dd hh:mm:ss')}"></span>
+                                        </div>
+                                        <div class="zm-item-rich-text expandable js-collapse-body">
+                                            <div class="zh-summary summary clearfix">
+                                                <div th:id="${'content'+question.qId}" class="question_content"
+                                                     th:onclick="'javascript:swithContent(\''+${question.qId}+'\')'"
+                                                     th:utext="${question.aText}">
+                                                </div>
+                                                <span swith_data="1" th:id="${'swith'+question.qId}"
+                                                      style="color: #006acc"
+                                                      th:onclick="'javascript:swithContent( \''+${question.qId}+'\')'">👇展开</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--循环end-->
+                </div>
+                <div class="jq22">
+                    <div class="more"><a href="javascript:" onClick="jq22.loadMore();">加载更多</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    var total = [[${questionList.data.rows.total}]]?[[${questionList.data.rows.total}]]:0;
+    var pageNum = [[${questionList.data.rows.pageNum}]]?[[${questionList.data.rows.pageNum}]]:0;
+    var pageSize = [[${questionList.data.rows.pageSize}]]?[[${questionList.data.rows.pageSize}]]:0;
+    var nexPage = pageNum+1;
+    jq22.init();
+</script>
+</body>
+</html>

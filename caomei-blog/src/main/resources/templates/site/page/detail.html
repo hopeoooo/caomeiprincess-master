@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="site/common/head">
+    <script src="../../../static/lib/editormd/jquery-3.3.1.min.js"></script>
+</head>
+<title>序/INTRO - twice&#39;s blog</title>
+<link rel="stylesheet" href="/live2d/css/live2d.css" />
+<style>
+    .vimg{
+        border: #000 solid 2px;
+        display: block;
+        margin: 50px auto;
+        border-radius: 50%;
+        transition: all 2.0s;
+    }
+    .vimg:hover{
+        transform: rotate(360deg);
+    }
+</style>
+
+<body class="bg-white" gtools_scp_screen_capture_injected="true">
+
+<div th:replace="site/common/header"></div>
+
+<div class="post-header-thumb">
+    <div class="post-header-thumb-op" th:if="${article.cover != null}" th:style="'background-image:url(' + ${article.cover} + ');'"></div>
+    <div class="post-header-thumb-cover">
+        <div class="post-header-thumb-container">
+            <div class="post-header-thumb-title">
+                [[${article.title}]]
+            </div>
+            <div class="post-header-thumb-meta">
+				<span class="leancloud-visitors" th:data-flag-title="${article.title}">
+                    <span class="leancloud-visitors-count"><b>[[${article.views}]]</b></span> Views
+				</span>
+                <time datetime="1524412800" itemprop="datePublished"><b>[[${#dates.format(article.publishTime, 'yyyy-MM-dd')}]]</b></time>
+                in <a th:href="'/category/' + ${article.category}" th:text="${article.category}"></a>
+                with <a href="#vcomments"><b>[[${count}]]</b></a>
+                <div class="post-header-thumb-meta" style="font-size: 13px;">
+                    <span class="post-count">本文字数：<b class="count"></b> 字</span>
+                    <span>|</span>
+                    <span class="post-count">阅读时长 ≈ <b class="time"></b> min</span>
+                </div>
+            </div>
+            <div class="post-tags">
+            </div>
+        </div>
+    </div>
+</div>
+
+<article class="main-content post-page" itemscope itemtype="http://schema.org/Article">
+    <div id="post-content" class="post-content" itemprop="articleBody" th:utext="${article.content}"></div>
+    <div style="text-align: center; margin: 20px 0;">
+        <p>如果你觉得这篇文章帮助到了你，你可以帮作者买一杯果汁表示鼓励</p>
+        <button id="reward-button" disable="enable" onclick='var qr=document.getElementById("QR");"none"===qr.style.display?qr.style.display="block":qr.style.display="none"'><span>打赏</span></button>
+        <div id="QR" style="display: none;">
+            <div>
+
+            </div>
+            <div th:each="item : ${setting.siteDonation}" style="display: inline-block;">
+                <img th:src="${item.value}" th:alt="${item.key}" id="wechat-qr">
+                <p>[[${item.key}]]</p>
+            </div>
+        </div>
+    </div>
+    <meting-js th:id="${setting.siteMusic}" server="netease" type="playlist" auto="" autoplay="flase"></meting-js>
+    <p class="post-info">
+        本文由 <a href="127.0.0.1:8084">ZHR</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Mar 23, 2019 12:32 pm
+    </p>
+</article>
+<div id="post-bottom-bar" class="post-bottom-bar">
+    <div class="bottom-bar-inner">
+        <div class="bottom-bar-items social-share left">
+            <span class="bottom-bar-item">Share : </span>
+            <span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.tycoding.cn/2018/04/23/INTRO/index.html" target="_blank" title="序/INTRO" rel="nofollow">facebook</a></span>
+            <span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=http://www.tycoding.cn/2018/04/23/INTRO/&text=序/INTRO" target="_blank" title="序/INTRO" rel="nofollow">Twitter</a></span>
+            <span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=序/INTRO" target="_blank" title="序/INTRO" rel="nofollow">Weibo</a></span>
+            <span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=http://www.tycoding.cn/2018/04/23/INTRO/index.html" target="_blank" rel="nofollow">QRcode</a></span>
+        </div>
+        <div class="bottom-bar-items right">
+            <span class="bottom-bar-item"><a href="/2018/04/25/常用的Linux命令/">←</a></span>
+            <span class="bottom-bar-item"><a href="#footer">↓</a></span>
+            <span class="bottom-bar-item"><a href="#">↑</a></span>
+        </div>
+    </div>
+</div>
+
+<input class="type" hidden value="0"/>
+<div th:replace="site/page/common/comments"></div>
+
+<div id="directory-content" class="directory-content">
+    <div id="directory"></div>
+</div>
+
+<div th:replace="site/common/footer"></div>
+<script data-th-src="@{/site/js/detail.js}"></script>
+
+<!-- live2d 特效-->
+<div id="landlord" style="left:5px;bottom:0px;">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>
+    <div class="live_talk_input_body">
+        <div class="live_talk_input_name_body">
+            <input name="name" type="text" class="live_talk_name white_input" id="AIuserName" autocomplete="off" placeholder="你的名字" />
+        </div>
+        <div class="live_talk_input_text_body">
+            <input name="talk" type="text" class="live_talk_talk white_input" id="AIuserText" autocomplete="off" placeholder="要和我聊什么呀？"/>
+            <button type="button" class="live_talk_send_btn" id="talk_send">发送</button>
+        </div>
+    </div>
+    <input name="live_talk" id="live_talk" value="1" type="hidden" />
+    <div class="live_ico_box">
+        <div class="live_ico_item type_info" id="showInfoBtn"></div>
+        <div class="live_ico_item type_talk" id="showTalkBtn"></div>
+        <div class="live_ico_item type_music" id="musicButton"></div>
+        <div class="live_ico_item type_youdu" id="youduButton"></div>
+        <div class="live_ico_item type_quit" id="hideButton"></div>
+        <input name="live_statu_val" id="live_statu_val" value="0" type="hidden" />
+        <audio src="" style="display:none;" id="live2d_bgm" data-bgm="0" preload="none"></audio>
+        <input name="live2dBGM" value="https://t1.aixinxi.net/o_1c52p4qbp15idv6bl55h381moha.mp3" type="hidden">
+        <input name="live2dBGM" value="https://t1.aixinxi.net/o_1c52p8frrlmf1aled1e14m56una.mp3" type="hidden">
+        <input id="duType" value="douqilai,l2d_caihong" type="hidden">
+    </div>
+</div>
+<div id="open_live2d">召唤伊斯特瓦尔</div>
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+    var message_Path = '/live2d/';//资源目录，如果目录不对请更改
+    var talkAPI = "";
+    //var talkAPI = "http://www.tuling123.com/openapi/api?key=7e0c61672f674208a85f85f7ff08855f";
+</script>
+<script type="text/javascript" src="/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="/live2d/js/message.js"></script>
+</body>
+</html>

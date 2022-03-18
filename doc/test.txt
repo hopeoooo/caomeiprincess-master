@@ -1,0 +1,171 @@
+-------------------------
+505339657
+blbl
+Mango@321
+-------------------------
+m74979830@gmail.com
+Mango@321
+-------------------------
+ethfo001@gmail.com
+replysmtp
+-------------------------
+13.213.17.183
+centos
+-------------------------
+hope7497
+hope1234
+-------------------------
+安装yum-utils：
+yum install -y yum-utils device-mapper-persistent-data lvm2
+为yum源添加docker仓库位置：
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+安装docker：
+yum install docker-ce
+启动docker：
+systemctl start docker
+
+----------------------------------------------------------
+docker stop zookeeper
+docker rm zookeeper
+docker rmi zookeeper:5.14.0 
+docker build -f Dockerfile -t zookeeper:5.14.0 .
+
+docker run -d -p 8086:8086 --name zookeeper zookeeper:5.14.0
+-------------------------
+mysql
+
+docker run -p 3306:3306 --name mysql --privileged=true \
+-v /mydata/mysql/log:/var/log/mysql \
+-v /mydata/mysql/data:/var/lib/mysql \
+-v /mydata/mysql/conf:/etc/mysql \
+-e MYSQL_ROOT_PASSWORD=yrEmiLfTyGKQYA55  \
+-d mysql:5.7 \
+--lower_case_table_names=1
+
+-------------------------
+redis
+docker pull redis:5
+
+docker run -p 6379:6379 --name redis \
+-v /mydata/redis/data:/data \
+-d redis:5 redis-server --appendonly yes \
+--requirepass "yrEmiLfTyGKQYA55"
+-------------------------
+nacos
+
+docker run -d \
+-e MODE=standalone \
+-e PREFER_HOST_MODE=hostname \
+-e SPRING_DATASOURCE_PLATFORM=mysql \
+-e MYSQL_SERVICE_HOST=13.213.17.183 \
+-e MYSQL_SERVICE_PORT=3306 \
+-e MYSQL_SERVICE_USER=root \
+-e MYSQL_SERVICE_PASSWORD=yrEmiLfTyGKQYA55 \
+-e MYSQL_SERVICE_DB_NAME=ry-config \
+-p 8848:8848 -p 9848:9848 -p 9849:9849 \
+--name nacos \
+--restart=always \
+nacos/nacos-server
+-------------------------
+zookeeper
+
+docker run -d \
+-p 2181:2181 \
+-v /mydata/zookeeper/data/:/data/ \
+--name=zookeeper  \
+--privileged zookeeper
+-------------------------
+nginx
+docker pull nginx:1.10
+
+docker run -p 80:80 --name nginx \
+-v /mydata/nginx/html:/usr/share/nginx/html \
+-v /mydata/nginx/logs:/var/log/nginx  \
+-d nginx:1.10
+
+mv nginx conf
+-------------------------
+portainer
+
+docker pull docker.io/portainer/portainer
+
+docker run -d -p 9000:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --name portainer docker.io/portainer/portainer
+-------------------------
+gitlab
+docker pull gitlab/gitlab-ce:latest
+
+docker run \
+ -itd  \
+ -p 9980:80 \
+ -p 9922:22 \
+ -v /mydata/gitlab/etc:/etc/gitlab  \
+ -v /mydata/gitlab/log:/var/log/gitlab \
+ -v /mydata/gitlab/opt:/var/opt/gitlab \
+ --restart always \
+ --privileged=true \
+ --name gitlab \
+ gitlab/gitlab-ce
+
+ 
+ 7siY8dbNQi3Br48
+ -------------------------
+线上
+ip
+13.214.20.123
+jar包目录
+/home/centos/docker/ruoyi/modules/block/jar
+-------------------------
+206.119.82.220
+206.119.82.221
+206.119.82.223
+
+账户：administrator
+密码：awIJ3`?3ZdrhsHz
+远程端口：3389
+
+IP:154.23.178.79
+IP:154.23.178.120
+IP:154.23.178.158
+远程端口:22
+账号:root
+密码:8418-b39y_60*t6q
+-------------------------
+systemctl stop firewalld
+systemctl disable firewalld
+
+docker container cp nginx:/etc/nginx /mydata/nginx/
+
+netstat  -anp  |grep  3306
+
+http://centos.spd.co.il/7.9.2009/isos/x86_64/
+-------------------------
+短信
+https://www.smsbao.com/openapi
+dxb011
+666888
+
+
+
+http://114.67.115.15/h5/index.html#/
+
+
+手机端演示APP下载地址
+https://smx.pqoeusa.com/N5mZ.app
+测试账号: test001  密码: 123456
+
+后台演示
+http://hongyun888.shop:6767/login
+账号: ceshi001
+密码: 123456
+谷歌验证码: 123456
+
+
+/root/.jenkins/workspace/panda-client/panda-client/target
+
+
+加法 add()函数    
+减法subtract()函数
+乘法multiply()函数    
+除法divide()函数    
+绝对值abs()函数
+

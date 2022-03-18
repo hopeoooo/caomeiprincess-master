@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="caomei-job-executor" />
+        <module name="caomei-job-core" />
+        <module name="caomei-music" />
+        <module name="caomei-blog" />
+        <module name="caomei-job-admin" />
+        <module name="caomei-knowledge" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
