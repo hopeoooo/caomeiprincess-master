@@ -1,0 +1,11 @@
+{
+   "sendCount":15,
+   "sendMsg":"你好",
+   "mouseMove":65,
+   "mouseWheel":5,
+   "wheelNum":4,
+   "startDelayTime":3000,
+   "sendDelayTime":2000,
+   "isRun":false,
+   "waitTime":10000
+}
